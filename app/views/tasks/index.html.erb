@@ -1,1 +1,22 @@
-test index
+<h1>List of tasks</h1>
+<p><%= link_to "create a task", tasks_new_path%></p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.description %></td>
+      <td><%= link_to "show", task_path(task) %></td>
+      <td><%= link_to "edit", task_edit_path(task) %></td>
+      <td>
+        <%= link_to "delete", task_path(task), method: :delete, data: {confirm: "are you sure"}%>
+      </td>
+    </tr>
+  <% end %>
+</table>
